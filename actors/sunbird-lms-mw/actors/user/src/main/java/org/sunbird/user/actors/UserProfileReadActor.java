@@ -398,6 +398,8 @@ public class UserProfileReadActor extends BaseActor {
 
   private void decryptUserExternalIds(List<Map<String, String>> dbResExternalIds) {
     if (CollectionUtils.isNotEmpty(dbResExternalIds)) {
+      Set<String> privateFieldsSet =
+          UserUtil.getTenantPrivateFields(JsonKey.ALL, JsonKey.SELF_DECLARATIONS);
       dbResExternalIds
           .stream()
           .forEach(
@@ -405,8 +407,7 @@ public class UserProfileReadActor extends BaseActor {
                 if (StringUtils.isNotBlank(s.get(JsonKey.ORIGINAL_EXTERNAL_ID))
                     && StringUtils.isNotBlank(s.get(JsonKey.ORIGINAL_ID_TYPE))
                     && StringUtils.isNotBlank(s.get(JsonKey.ORIGINAL_PROVIDER))) {
-                  if (JsonKey.DECLARED_EMAIL.equals(s.get(JsonKey.ORIGINAL_ID_TYPE))
-                      || JsonKey.DECLARED_PHONE.equals(s.get(JsonKey.ORIGINAL_ID_TYPE))) {
+                  if (privateFieldsSet.contains(s.get(JsonKey.ORIGINAL_ID_TYPE))) {
 
                     String decrytpedOriginalExternalId =
                         UserUtil.getDecryptedData(s.get(JsonKey.ORIGINAL_EXTERNAL_ID));

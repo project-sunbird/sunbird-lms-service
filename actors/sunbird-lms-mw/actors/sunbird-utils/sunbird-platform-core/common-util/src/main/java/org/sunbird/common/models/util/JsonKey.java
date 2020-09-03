@@ -1070,6 +1070,9 @@ public final class JsonKey {
   public static final String STATE_PROVIDED_EXT_ID = "State provided ext. ID";
   public static final String USER_INFO = "userInfo";
   public static final String USR_DECLARATION_TABLE = "user_declarations";
+  public static final String SELF_DECLARATIONS = "selfdeclarations";
+  public static final String OPTIONAL_FIELDS = "optionalFields";
+  public static final String ALIASES = "aliases";
   public static final String ERROR_TYPE = "errorType";
   public static final String DECLARATIONS = "declarations";
   public static final String PERSONA = "persona";
@@ -1077,6 +1080,7 @@ public final class JsonKey {
   // is different from role or user type = TEACHER
   public static final String TEACHER_PERSONA = "teacher";
   public static final String TENANT_PREFERENCE_V2 = "tenantPreferenceV2";
+  public static final String TENANT_PREFERENCE_V2_DB = "tenant_preference_v2";
 
   private JsonKey() {}
 }

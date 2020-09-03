@@ -41,6 +41,7 @@ public class DeclaredExternalIdActor extends BaseActor {
     response.setResponseCode(ResponseCode.OK);
     Map requestMap = request.getRequest();
     String processId = (String) requestMap.get(JsonKey.PROCESS_ID);
+
     String rootOrgId = (String) requestMap.get(JsonKey.ROOT_ORG_ID);
     Map<String, Object> row = UserUploadUtil.getFullRecordFromProcessId(processId);
     BulkMigrationUser bulkMigrationUser = UserUploadUtil.convertRowToObject(row);
